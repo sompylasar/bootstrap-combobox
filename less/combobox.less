@@ -1,5 +1,6 @@
 .combobox-container {
   .input-append();
+  position: relative;
   select {
     display: inline-block;
     width: 0;
@@ -9,6 +10,36 @@
     margin: 0;
     text-indent: -99999px;
     *text-indent: 0;
+  }
+  .dropdown-arrow {
+    position: absolute;
+    bottom: -3px;
+    left: 7px;
+    z-index: 1052;
+    display: none;
+    &:before,
+    &:after {
+      position: absolute;
+      bottom: 0px;
+      display: block;
+      content: '';
+    }
+    &:before {
+      left: 0px;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid #ccc;
+      border-left: 7px solid transparent;
+      border-bottom-color: rgba(0, 0, 0, 0.2);
+    }
+    &:after {
+      left: 1px;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid #ffffff;
+      border-left: 6px solid transparent;
+    }
+  }
+  &.combobox-open .dropdown-arrow {
+    display: block;
   }
 }
 

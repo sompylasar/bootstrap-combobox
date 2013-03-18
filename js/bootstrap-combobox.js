@@ -27,7 +27,8 @@
     this.$element = this.$container.find('input[type=text]')
     this.$target = this.$container.find('input[type=hidden]')
     this.$button = this.$container.find('.dropdown-toggle')
-    this.$menu = $(this.options.menu).appendTo('body')
+    this.$menu = $(this.options.menu).appendTo(this.$container)
+    this.$arrow = $(this.options.arrow).appendTo(this.$container)
     this.matcher = this.options.matcher || this.matcher
     this.sorter = this.options.sorter || this.sorter
     this.highlighter = this.options.highlighter || this.highlighter
@@ -86,6 +87,18 @@
     this.$element.attr('title', this.$source.attr('title'))
     this.$element.attr('class', this.$source.attr('class'))
   }
+
+  , show: function () {
+      var ret = $.fn.typeahead.Constructor.prototype.show.apply(this, arguments);
+      this.$container.addClass('combobox-open');
+      return ret;
+    }
+
+  , hide: function () {
+      var ret = $.fn.typeahead.Constructor.prototype.hide.apply(this, arguments);
+      this.$container.removeClass('combobox-open');
+      return ret;
+    }
 
   , toggle: function () {
     if (this.$container.hasClass('combobox-selected')) {
@@ -229,6 +242,7 @@
   $.fn.combobox.defaults = {
   template: '<div class="combobox-container"><input type="hidden" /><input type="text" autocomplete="off" /><span class="add-on btn dropdown-toggle" data-dropdown="dropdown"><span class="caret"/><span class="combobox-clear"><i class="icon-remove"/></span></span></div>'
   , menu: '<ul class="typeahead typeahead-long dropdown-menu"></ul>'
+  , arrow: '<div class="dropdown-arrow"></div>'
   , item: '<li><a href="#"></a></li>'
   }
 
