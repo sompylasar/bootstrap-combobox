@@ -8,6 +8,9 @@
 
   position: relative;
 }
+.combobox-container .dropdown-menu {
+	font-size: 14px; /* override font-size: 0; from .input-append() above */
+}
 .combobox-container:before,
 .combobox-container:after {
   display: table;
@@ -21,6 +24,7 @@
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
+  margin-bottom: 0;
 }
 .combobox-container input:focus,
 .combobox-container .uneditable-input:focus {
