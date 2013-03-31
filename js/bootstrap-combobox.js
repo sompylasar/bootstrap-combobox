@@ -166,6 +166,8 @@
 
       this.$menu
         .on('click', $.proxy(this.click, this))
+        .on('mouseenter', $.proxy(this.mouseenterMenu, this))
+        .on('mouseleave', $.proxy(this.mouseleaveMenu, this))
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
         .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
 
@@ -220,9 +222,16 @@
       if (!this.mousedover && this.shown) setTimeout(function () { that.hide() }, 200)
     }
 
+  , mouseenterMenu: function (e) {
+      this.mousedover = true
+    }
+
+  , mouseleaveMenu: function (e) {
+      this.mousedover = false
+    }
+
   // modified typeahead function to not hide
   , mouseleave: function (e) {
-      this.mousedover = false
     }
   })
 
